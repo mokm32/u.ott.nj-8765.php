@@ -47,7 +47,6 @@
         .error {
             color: #ff4d4d;
             margin-top: 10px;
-            display: none;
         }
         .shop-name {
             position: fixed;
@@ -62,35 +61,30 @@
 <body>
     <div class="password-container">
         <h2>Masukkan Kata Laluan Senarai Main</h2>
-        <input type="password" id="passwordInput" placeholder="Kata Laluan">
-        <br>
-        <button onclick="checkPassword()">Akses Senarai Main</button>
-        <p class="error" id="errorMessage">Kata laluan salah. Sila cuba lagi.</p>
-    </div>
-    <div class="shop-name">Beli di kedai Shopee NeckleNj</div>
-    <script>
-        const correctPassword = "mySecurePlaylist123"; // Tukar kepada kata laluan yang anda inginkan
-        const playlistUrl = "https://yourdomain.com/playlist.m3u"; // Tukar kepada URL senarai main sebenar
+        <form method="POST" action="">
+            <input type="password" name="password" placeholder="Kata Laluan" required>
+            <br>
+            <button type="submit">Akses Senarai Main</button>
+        </form>
+        <?php
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $correctPassword = "34865"; // Tukar kepada kata laluan yang anda inginkan
+            $playlistUrl =" https://mokm32.github.io/u.ott.nj-8765.php/"; // Tukar kepada URL senarai main sebenar
 
-        function checkPassword() {
-            const input = document.getElementById("passwordInput").value;
-            if (input === correctPassword) {
-                window.location.href = playlistUrl; // Alihkan ke URL senarai main
+            $inputPassword = $_POST['password'] ?? '';
+            if ($inputPassword === $correctPassword) {
+                // Alihkan ke URL senarai main jika kata laluan betul
+                header("Location: $playlistUrl");
+                exit;
             } else {
-                document.getElementById("errorMessage").style.display = "block";
+                echo '<p class="error">Kata laluan salah. Sila cuba lagi.</p>';
             }
         }
-
-        // Benarkan kemasukan kata laluan dengan kekunci Enter
-        document.getElementById("passwordInput").addEventListener("keypress", function(event) {
-            if (event.key === "Enter") {
-                checkPassword();
-            }
-        });
-    </script>
+        ?>
+    </div>
+    <div class="shop-name">Beli di kedai Shopee NeckleNj</div>
 </body>
 </html>
-
 ==========================================================================
 
 #EXTM3U x-tvg-url="https://azimabid00.github.io/epg/astro_epg.xml,https://bit.ly/pondan-epg,https://raw.githubusercontent.com/AqFad2811/epg/main/unifitv.xml,https://raw.githubusercontent.com/azimabid00/epg/main/unifi_epg.xml,https://aqfadtv.xyz/epg" refresh="1440" max-conn="4" refresh="24" billed-msg="Refresh Done | If OTT Navigator pop-up update please DO NOT UPDATE, current stable version: 1.7.1.5" vod_library="https://mokm32.github.io/vod-top-20/,https://vod.pondan.workers.dev/dewanonton.json,https://mokm32.github.io/vodupdatenew/,https://www.dropbox.com/scl/fi/x5hwcfzcii5yzrmivqwjg/RKH-movie.txt?rlkey=43hqbafl9pvf7lbpppk6ubxxm&st=zsor4flu&dl=1"
