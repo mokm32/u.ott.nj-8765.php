@@ -81,7 +81,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap:  Pakej Agen A - RM150.00.75rem;
+      gap: 0.75rem;
     }
 
     .channel-list li {
@@ -126,7 +126,7 @@
     }
 
     .package button {
-     sportmargin-top: 10px;
+      margin-top: 10px;
       background-color: #00bfff;
       color: white;
       border: none;
@@ -239,13 +239,28 @@
       word-break: break-all;
     }
 
+    .affiliate-link button {
+      margin-top: 10px;
+      background-color: #00bfff;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .affiliate-link button:hover {
+      background-color: #009acd;
+    }
+
     .admin-settings {
       background-color: #14375d;
       padding: 1rem;
       border-radius: 8px;
       margin: 1rem auto;
       max-width: 400px;
-      display: none; /* Tersembunyi secara lalai */
+      display: none;
     }
 
     .admin-settings.visible {
@@ -307,7 +322,7 @@
       <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="News"/> News</li>
       <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Documentary"/> Documentary</li>
       <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Arab"/> Arab</li>
-      <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Brunei"/> Brunei</li>
+      <li><img src="https://klinj-site/"></a>
       <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Entertainment"/> Entertainment</li>
       <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Fast Channel"/> Fast Channel</li>
       <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Korean"/> Korean</li>
@@ -391,7 +406,7 @@
   <section class="affiliate-section">
     <h2>🌟 Sertai Program Affiliate NeckleNj!</h2>
     <p>
-      Sertai program affiliate kami dan dapatkan komisen untuk setiap jualan yang dibuat melalui pautan affiliate anda! Hanya promosikan produk kami dan nikmati pendapatan pasif. Daftar sekarang untuk mendapatkan kod affiliate unik anda!
+      Sertai program affiliate kami dan dapatkan komisen untuk setiap jualan yang dibuat melalui pautan affiliate anda! Hanya promosikan produk kami dan nikmati pendapatan pasif. Daftar sekarang untuk mendapatkan kod affiliate unik anda yang boleh dikongsi di WhatsApp, Facebook, Instagram, atau mana-mana platform!
     </p>
     <p>Peratusan Komisen Semasa: <strong id="currentCommissionRate"></strong>%</p>
     <form id="affiliateForm" onsubmit="registerAffiliate(event)">
@@ -404,6 +419,8 @@
     <div id="affiliateLink" class="affiliate-link" style="display: none;">
       <p>Kod Affiliate Anda: <strong id="affiliateCodeDisplay"></strong></p>
       <p>Pautan Affiliate Anda: <strong id="affiliateLinkDisplay"></strong></p>
+      <button onclick="copyAffiliateLink()">Salin Pautan Affiliate</button>
+      <button onclick="shareAffiliateLink()">Kongsi Pautan Affiliate</button>
     </div>
     <div class="admin-settings">
       <h2>Tetapan Admin (Peratusan Komisen)</h2>
@@ -519,7 +536,7 @@
       document.getElementById('affiliateLink').style.display = 'block';
 
       // Menghantar butiran pendaftaran ke WhatsApp
-      const msg = `Pendaftaran Affiliate Baru:\nNama: ${name}\nTelefon: ${phone}\nEmail: ${email}\nKod Affiliate: ${affiliateCode}`;
+      const msg = `Pendaftaran Affiliate Baru:\nNama: ${name}\nTelefon: ${phone}\nEmail: ${email}\nKod Affiliate: ${affiliateCode}\nPautan Affiliate: ${affiliateLink}`;
       const url = `https://wa.me/601136237443?text=${encodeURIComponent(msg)}`;
       window.open(url, '_blank');
 
@@ -527,9 +544,42 @@
       document.getElementById('affiliateForm').reset();
     }
 
+    // Fungsi untuk menyalin pautan affiliate
+    function copyAffiliateLink() {
+      const affiliateLink = document.getElementById('affiliateLinkDisplay').textContent;
+      navigator.clipboard.writeText(affiliateLink).then(() => {
+        alert('Pautan affiliate telah disalin ke papan klip!');
+      }).catch(err => {
+        alert('Gagal menyalin pautan. Sila salin secara manual.');
+      });
+    }
+
+    // Fungsi untuk berkongsi pautan affiliate
+    function shareAffiliateLink() {
+      const affiliateLink = document.getElementById('affiliateLinkDisplay').textContent;
+      const shareText = `Sertai NeckleNj dan nikmati hiburan tanpa batasan! Gunakan pautan saya untuk mendapatkan akses: ${affiliateLink}`;
+      if (navigator.share) {
+        navigator.share({
+          title: 'Sertai NeckleNj!',
+          text: shareText,
+          url: affiliateLink
+        }).catch(err => {
+          alert('Gagal berkongsi pautan. Sila kongsikan secara manual.');
+        });
+      } else {
+        alert('Fungsi kongsi tidak disokong pada pelayar ini. Sila salin pautan dan kongsikan secara manual.');
+      }
+    }
+
     // Fungsi untuk mengisi pakej
     function fillPackage(value) {
       document.getElementById('pakej').value = value;
+      // Isi kod affiliate dari URL jika ada
+      const urlParams = new URLSearchParams(window.location.search);
+      const affiliateCode = urlParams.get('affiliate');
+      if (affiliateCode) {
+        document.getElementById('affiliateCode').value = affiliateCode;
+      }
       window.scrollTo({ top: document.getElementById('orderForm').offsetTop - 20, behavior: 'smooth' });
     }
 
@@ -549,7 +599,15 @@
     }
 
     // Memaparkan komisen semasa laman dimuat
-    window.onload = displayCommissions;
+    window.onload = function() {
+      displayCommissions();
+      // Isi kod affiliate dari URL jika ada
+      const urlParams = new URLSearchParams(window.location.search);
+      const affiliateCode = urlParams.get('affiliate');
+      if (affiliateCode) {
+        document.getElementById('affiliateCode').value = affiliateCode;
+      }
+    };
   </script>
 </body>
 </html>
