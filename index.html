@@ -20,330 +20,11 @@
   <meta property="og:image" content="https://mokm32.github.io/necklenj-site/images/logo.png">
   <meta property="og:url" content="https://mokm32.github.io/necklenj-site/">
   <meta property="og:type" content="website">
-
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #0b1d3a;
-      color: #ffffff;
-    }
-
-    header {
-      text-align: center;
-      padding: 2rem 1rem;
-      background-color: #0a2540;
-      border-bottom: 3px solid #00bfff;
-    }
-
-    header h1 {
-      font-size: 2rem;
-      color: #00bfff;
-    }
-
-    header p {
-      font-size: 1.1rem;
-      margin-top: 0.5rem;
-    }
-
-    .hero {
-      background-color: #0e2a4d;
-      padding: 2rem;
-      text-align: center;
-      line-height: 1.6;
-    }
-
-    .hero h2 {
-      font-size: 1.5rem;
-      color: #00bfff;
-    }
-
-    .hero p {
-      font-size: 1rem;
-      max-width: 700px;
-      margin: auto;
-    }
-
-    .channel-list {
-      padding: 2rem 1rem;
-      background-color: #14375d;
-      text-align: center;
-    }
-
-    .channel-list h2 {
-      color: #00bfff;
-      margin-bottom: 1rem;
-    }
-
-    .channel-list ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.75rem;
-    }
-
-    .channel-list li {
-      background-color: #1b4e80;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-size: 0.95rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .channel-list img {
-      width: 20px;
-      height: 20px;
-    }
-
-    .package-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      padding: 2rem 1rem;
-    }
-
-    .package {
-      background-color: #14375d;
-      border: 1px solid #1b4e80;
-      padding: 1rem;
-      border-radius: 10px;
-      width: 260px;
-      text-align: center;
-      box-shadow: 0 0 10px rgba(0, 191, 255, 0.2);
-    }
-
-    .package h3 {
-      color: #00bfff;
-    }
-
-    .package p {
-      font-size: 0.95rem;
-    }
-
-    .package button {
-      margin-top: 10px;
-      background-color: #00bfff;
-      color: white;
-      border: none;
-      padding: 10px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .package button:hover {
-      background-color: #009acd;
-    }
-
-    .quantity-controls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .quantity-controls button {
-      background-color: #00bfff;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .quantity-controls button:hover {
-      background-color: #009acd;
-    }
-
-    .quantity-controls input {
-      width: 40px;
-      text-align: center;
-      border-radius: 4px;
-      border: none;
-    }
-
-    .cart {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background-color: #14375d;
-      padding: 1rem;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 191, 255, 0.2);
-      max-width: 300px;
-      z-index: 1000;
-    }
-
-    .cart h2 {
-      color: #00bfff;
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-    }
-
-    .cart ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .cart li {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.5rem;
-      font-size: 0.9rem;
-    }
-
-    .cart li span {
-      color: #00bfff;
-    }
-
-    .cart .total {
-      font-weight: bold;
-      margin-top: 1rem;
-      font-size: 1rem;
-    }
-
-    .cart button {
-      background-color: #00bfff;
-      color: white;
-      border: none;
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .cart button:hover {
-      background-color: #009acd;
-    }
-
-    form {
-      padding: 2rem 1rem;
-      max-width: 400px;
-      margin: auto;
-      background-color: #0e2a4d;
-      border-radius: 10px;
-    }
-
-    form h2 {
-      text-align: center;
-      color: #00bfff;
-    }
-
-    form input, form select, form textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border-radius: 5px;
-      border: none;
-    }
-
-    form button {
-      background-color: #00bfff;
-      color: white;
-      border: none;
-      width: 100%;
-      padding: 12px;
-      margin-top: 10px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    form button:hover {
-      background-color: #009acd;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      background-color: #0a2540;
-      border-top: 2px solid #00bfff;
-      font-size: 0.9rem;
-    }
-
-    a {
-      color: #00bfff;
-    }
-
-    .payment-methods {
-      text-align: center;
-      background-color: #0e2a4d;
-      padding: 2rem 1rem;
-    }
-
-    .payment-methods h2 {
-      color: #00bfff;
-    }
-
-    .payment-methods p {
-      font-size: 1rem;
-      color: #ffffff;
-    }
-
-    .payment-methods .bank-info {
-      font-size: 1.1rem;
-      color: #00bfff;
-      background-color: #14375d;
-      padding: 1rem;
-      border-radius: 8px;
-      margin: 1rem 0;
-    }
-
-    @media (max-width: 768px) {
-      .package-container {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      form {
-        width: 90%;
-      }
-
-      .cart {
-        position: static;
-        max-width: 100%;
-        margin: 1rem auto;
-      }
-    }
-  </style>
 </head>
-<body禁止
 
-System: Saya perasan terdapat ralat kecil dalam kod asal di bahagian CSS untuk `.package button`. Baris `background-color: #00b` tidak lengkap dan perlu diperbaiki kepada `background-color: #00bfff`. Saya akan memasukkan pembetulan ini dalam kod yang dikemas kini dan menamban fungsi bakul troli seperti yang diminta.
-
-Berikut adalah kod lengkap yang telah dikemas kini dengan pembetulan dan penambahan fungsi bakul troli:
-
-<xaiArtifact artifact_id="cfa05ed7-db59-42b3-b13f-9887e192ca08" artifact_version_id="d65f8c38-8399-4f80-a8be-736a93d735ea" title="index.html" contentType="text/html">
-<!DOCTYPE html>
-<html lang="ms">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ✅ Google Search Console Verification -->
-  <meta name="google-site-verification" content="tAlOue1TbNspSDAu26Y7AZZQhJ7qwTNYkSqBS_CQIxs" />
-
-  <!-- ✅ SEO Meta Tags -->
-  <title>Necklenj - Handmade & Unik</title>
-  <meta name="description" content="Necklenj - Koleksi produk handmade unik dan bergaya dari Malaysia.">
-  <meta name="keywords" content="necklenj, ott navigator, ott tv, ott navigator lifetime, jual id ott navigator, jual id ott tv, id ott murah, malaysia">
-  <meta name="robots" content="index, follow">
-
-  <!-- ✅ Open Graph (Paparan Cantik di WhatsApp/Facebook) -->
-  <meta property="og:title" content="Necklenj - Handmade & Unik">
-  <meta property="og:description" content="Koleksi produk handmade unik dan bergaya dari Malaysia.">
-  <meta property="og:image" content="https://mokm32.github.io/necklenj-site/images/logo.png">
-  <meta property="og:url" content="https://mokm32.github.io/necklenj-site/">
-  <meta property="og:type" content="website">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NeckleNj | Jual ID OTT Navigator Lifetime + VOD</title>
   <style>
     body {
       margin: 0;
@@ -463,90 +144,6 @@ Berikut adalah kod lengkap yang telah dikemas kini dengan pembetulan dan penamba
       background-color: #009acd;
     }
 
-    .quantity-controls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .quantity-controls button {
-      background-color: #00bfff;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .quantity-controls button:hover {
-      background-color: #009acd;
-    }
-
-    .quantity-controls input {
-      width: 40px;
-      text-align: center;
-      border-radius: 4px;
-      border: none;
-    }
-
-    .cart {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background-color: #14375d;
-      padding: 1rem;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 191, 255, 0.2);
-      max-width: 300px;
-      z-index: 1000;
-    }
-
-    .cart h2 {
-      color: #00bfff;
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-    }
-
-    .cart ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .cart li {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.5rem;
-      font-size: 0.9rem;
-    }
-
-    .cart li span {
-      color: #00bfff;
-    }
-
-    .cart .total {
-      font-weight: bold;
-      margin-top: 1rem;
-      font-size: 1rem;
-    }
-
-    .cart button {
-      background-color: #00bfff;
-      color: white;
-      border: none;
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .cart button:hover {
-      background-color: #009acd;
-    }
-
     form {
       padding: 2rem 1rem;
       max-width: 400px;
@@ -560,7 +157,7 @@ Berikut adalah kod lengkap yang telah dikemas kini dengan pembetulan dan penamba
       color: #00bfff;
     }
 
-    form input, form select, form textarea {
+    form input, form select {
       width: 100%;
       padding: 10px;
       margin: 8px 0;
@@ -627,12 +224,6 @@ Berikut adalah kod lengkap yang telah dikemas kini dengan pembetulan dan penamba
 
       form {
         width: 90%;
-      }
-
-      .cart {
-        position: static;
-        max-width: 100%;
-        margin: 1rem auto;
       }
     }
   </style>
@@ -642,13 +233,6 @@ Berikut adalah kod lengkap yang telah dikemas kini dengan pembetulan dan penamba
     <h1>NeckleNj</h1>
     <p>Jual ID OTT Navigator + VOD Lifetime</p>
   </header>
-
-  <div class="cart" id="cart">
-    <h2>Bakul Troli</h2>
-    <ul id="cart-items"></ul>
-    <div class="total">Jumlah: RM <span id="cart-total">0.00</span></div>
-    <button onclick="proceedToOrder()">Tempah Sekarang</button>
-  </div>
 
   <section class="hero">
     <h2>🎬 Selamat Datang ke website NeckleNj – Hiburan Tanpa Batasan!</h2>
@@ -698,71 +282,43 @@ Berikut adalah kod lengkap yang telah dikemas kini dengan pembetulan dan penamba
       <h3>Pakej 1</h3>
       <p>1 ID untuk 1 Peranti</p>
       <p><strong>RM8.00</strong> Lifetime</p>
-      <div class="quantity-controls">
-        <button onclick="updateQuantity('Pakej 1', -1)">-</button>
-        <input type="number" id="qty-Pakej 1" value="0" min="0" onchange="updateCart('Pakej 1', this.value)">
-        <button onclick="updateQuantity('Pakej 1', 1)">+</button>
-      </div>
+      <button onclick="fillPackage('Pakej 1 - RM8.00')">Tempah Sekarang</button>
     </div>
     <div class="package">
       <h3>Pakej 2</h3>
       <p>1 ID untuk 2 Peranti</p>
       <p><strong>RM16.00</strong> Lifetime</p>
-      <div class="quantity-controls">
-        <button onclick="updateQuantity('Pakej 2', -1)">-</button>
-        <input type="number" id="qty-Pakej 2" value="0" min="0" onchange="updateCart('Pakej 2', this.value)">
-        <button onclick="updateQuantity('Pakej 2', 1)">+</button>
-      </div>
+      <button onclick="fillPackage('Pakej 2 - RM16.00')">Tempah Sekarang</button>
     </div>
     <div class="package">
       <h3>Pakej 3</h3>
       <p>1 ID untuk 3 Peranti</p>
       <p><strong>RM24.00</strong> Lifetime</p>
-      <div class="quantity-controls">
-        <button onclick="updateQuantity('Pakej 3', -1)">-</button>
-        <input type="number" id="qty-Pakej 3" value="0" min="0" onchange="updateCart('Pakej 3', this.value)">
-        <button onclick="updateQuantity('Pakej 3', 1)">+</button>
-      </div>
+      <button onclick="fillPackage('Pakej 3 - RM24.00')">Tempah Sekarang</button>
     </div>
     <div class="package">
       <h3>Pakej 4</h3>
       <p>1 ID untuk 4 Peranti</p>
       <p><strong>RM32.00</strong> Lifetime</p>
-      <div class="quantity-controls">
-        <button onclick="updateQuantity('Pakej 4', -1)">-</button>
-        <input type="number" id="qty-Pakej 4" value="0" min="0" onchange="updateCart('Pakej 4', this.value)">
-        <button onclick="updateQuantity('Pakej 4', 1)">+</button>
-      </div>
+      <button onclick="fillPackage('Pakej 4 - RM32.00')">Tempah Sekarang</button>
     </div>
     <div class="package">
       <h3>Pakej Agen A</h3>
       <p>1 ID untuk 20 Peranti</p>
       <p><strong>RM150.00</strong> Lifetime</p>
-      <div class="quantity-controls">
-        <button onclick="updateQuantity('Pakej Agen A', -1)">-</button>
-        <input type="number" id="qty-Pakej Agen A" value="0" min="0" onchange="updateCart('Pakej Agen A', this.value)">
-        <button onclick="updateQuantity('Pakej Agen A', 1)">+</button>
-      </div>
+      <button onclick="fillPackage('Pakej Agen A - RM150.00')">Tempah Sekarang</button>
     </div>
     <div class="package">
       <h3>Pakej Agen B</h3>
       <p>1 ID untuk 50 Peranti</p>
       <p><strong>RM325.00</strong> Lifetime</p>
-      <div class="quantity-controls">
-        <button onclick="updateQuantity('Pakej Agen B', -1)">-</button>
-        <input type="number" id="qty-Pakej Agen B" value="0" min="0" onchange="updateCart('Pakej Agen B', this.value)">
-        <button onclick="updateQuantity('Pakej Agen B', 1)">+</button>
-      </div>
+      <button onclick="fillPackage('Pakej Agen B - RM325.00')">Tempah Sekarang</button>
     </div>
     <div class="package">
       <h3>Pakej Agen C</h3>
       <p>1 ID untuk 100 Peranti</p>
       <p><strong>RM600.00</strong> Lifetime</p>
-      <div class="quantity-controls">
-        <button onclick="updateQuantity('Pakej Agen C', -1)">-</button>
-        <input type="number" id="qty-Pakej Agen C" value="0" min="0" onchange="updateCart('Pakej Agen C', this.value)">
-        <button onclick="updateQuantity('Pakej Agen C', 1)">+</button>
-      </div>
+      <button onclick="fillPackage('Pakej Agen C - RM600.00')">Tempah Sekarang</button>
     </div>
   </section>
 
@@ -770,21 +326,32 @@ Berikut adalah kod lengkap yang telah dikemas kini dengan pembetulan dan penamba
     <h2>Borang Tempahan</h2>
     <input type="text" id="nama" placeholder="Nama Penuh" required>
     <input type="text" id="telefon" placeholder="No Telefon" required>
-    <textarea id="pakej" placeholder="Butiran Pakej" readonly></textarea>
+    <select id="pakej" required>
+      <option value="">Pilih Pakej</option>
+      <option value="Pakej 1 - RM8.00">Pakej 1 - RM8.00</option>
+      <option value="Pakej 2 - RM16.00">Pakej 2 - RM16.00</option>
+      <option value="Pakej 3 - RM24.00">Pakej 3 - RM24.00</option>
+      <option value="Pakej 4 - RM32.00">Pakej 4 - RM32.00</option>
+      <option value="Pakej Agen A - RM150.00">Pakej Agen A - RM150.00</option>
+      <option value="Pakej Agen B - RM325.00">Pakej Agen B - RM325.00</option>
+      <option value="Pakej Agen C - RM600.00">Pakej Agen C - RM600.00</option>
+    </select>
     <button type="submit">Hantar ke WhatsApp</button>
   </form>
 
   <section class="payment-methods">
-    <h2>Kaedah Pembayaran</h2>
-    <div class="bank-info">
-      <a href="https://i.ibb.co/0jtvDs9h/photo-2025-05-23-20-36-48.jpg" target="_blank">
-        <img src="https://i.ibb.co/0jtvDs9h/photo-2025-05-23-20-36-48.jpg" alt="Bukti Pembayaran" style="width: 200px; height: auto; margin-bottom: 10px; border-radius: 8px;">
-      </a>
-      <p><strong>Bank: Hong Leong Bank</strong></p>
-      <p><strong> - </strong></p>
-      <p>Sila buat pembayaran melalui <strong>QR Payment</strong> ke akaun di atas dan hantar bukti pembayaran kepada kami melalui WhatsApp.</p>
-    </div>
-  </section>
+  <h2>Kaedah Pembayaran</h2>
+  <div class="bank-info">
+    <!-- Gambar boleh ditekan dan dibuka dalam tab baru -->
+    <a href="https://i.ibb.co/0jtvDs9h/photo-2025-05-23-20-36-48.jpg" target="_blank">
+      <img src="https://i.ibb.co/0jtvDs9h/photo-2025-05-23-20-36-48.jpg" alt="Bukti Pembayaran" style="width: 200px; height: auto; margin-bottom: 10px; border-radius: 8px;">
+    </a>
+
+    <p><strong>Bank: Hong Leong Bank</strong></p>
+    <p><strong> - </strong></p>
+    <p>Sila buat pembayaran melalui <strong>QR Payment</strong> ke akaun di atas dan hantar bukti pembayaran kepada kami melalui WhatsApp.</p>
+  </div>
+</section>
 
   <footer>
     📞 Hubungi: <a href="tel:+601136237443">011-3623 7443</a><br/>
@@ -793,73 +360,8 @@ Berikut adalah kod lengkap yang telah dikemas kini dengan pembetulan dan penamba
   </footer>
 
   <script>
-    const packages = {
-      'Pakej 1': 8.00,
-      'Pakej 2': 16.00,
-      'Pakej 3': 24.00,
-      'Pakej 4': 32.00,
-      'Pakej Agen A': 150.00,
-      'Pakej Agen B': 325.00,
-      'Pakej Agen C': 600.00
-    };
-
-    let cart = {};
-
-    function updateCart(packageName, quantity) {
-      quantity = parseInt(quantity) || 0;
-      if (quantity < 0) quantity = 0;
-      cart[packageName] = quantity;
-      if (quantity === 0) delete cart[packageName];
-      updateCartDisplay();
-    }
-
-    function updateQuantity(packageName, change) {
-      const input = document.getElementById(`qty-${packageName}`);
-      let quantity = parseInt(input.value) + change;
-      if (quantity < 0) quantity = 0;
-      input.value = quantity;
-      updateCart(packageName, quantity);
-    }
-
-    function updateCartDisplay() {
-      const cartItems = document.getElementById('cart-items');
-      const cartTotal = document.getElementById('cart-total');
-      cartItems.innerHTML = '';
-      let total = 0;
-
-      for (const [pkg, qty] of Object.entries(cart)) {
-        if (qty > 0) {
-          const price = packages[pkg] * qty;
-          total += price;
-          const li = document.createElement('li');
-          li.innerHTML = `${pkg} x${qty} <span>RM ${price.toFixed(2)}</span>`;
-          cartItems.appendChild(li);
-        }
-      }
-
-      cartTotal.textContent = total.toFixed(2);
-    }
-
-    function proceedToOrder() {
-      if (Object.keys(cart).length === 0) {
-        alert('Bakul troli kosong. Sila tambah pakej terlebih dahulu.');
-        return;
-      }
-
-      let orderDetails = '';
-      let total = 0;
-      for (const [pkg, qty] of Object.entries(cart)) {
-        if (qty > 0) {
-          const price = packages[pkg] * qty;
-          total += price;
-          orderDetails += `${pkg} x${qty}: RM ${price.toFixed(2)}\n`;
-        }
-      }
-      orderDetails += `Jumlah: RM ${total.toFixed(2)}`;
-
-      const pakejInput = document.getElementById('pakej');
-      pakejInput.value = orderDetails;
-
+    function fillPackage(value) {
+      document.getElementById('pakej').value = value;
       window.scrollTo({ top: document.getElementById('orderForm').offsetTop - 20, behavior: 'smooth' });
     }
 
@@ -868,7 +370,7 @@ Berikut adalah kod lengkap yang telah dikemas kini dengan pembetulan dan penamba
       const nama = document.getElementById('nama').value;
       const telefon = document.getElementById('telefon').value;
       const pakej = document.getElementById('pakej').value;
-      const msg = `Tempahan Baru:\nNama: ${nama}\nTelefon: ${telefon}\nPakej:\n${pakej}`;
+      const msg = `Tempahan Baru:\nNama: ${nama}\nTelefon: ${telefon}\nPakej: ${pakej}`;
       const url = `https://wa.me/601136237443?text=${encodeURIComponent(msg)}`;
       window.open(url, '_blank');
     }
