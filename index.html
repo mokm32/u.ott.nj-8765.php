@@ -20,7 +20,7 @@
   <meta property="og:image" content="https://mokm32.github.io/necklenj-site/images/logo.png">
   <meta property="og:url" content="https://mokm32.github.io/necklenj-site/">
   <meta property="og:type" content="website">
-  
+
   <style>
     body {
       margin: 0;
@@ -140,6 +140,90 @@
       background-color: #009acd;
     }
 
+    .quantity-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .quantity-controls button {
+      background-color: #00bfff;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .quantity-controls button:hover {
+      background-color: #009acd;
+    }
+
+    .quantity-controls input {
+      width: 40px;
+      text-align: center;
+      border-radius: 4px;
+      border: none;
+    }
+
+    .cart {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #14375d;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 191, 255, 0.2);
+      max-width: 300px;
+      z-index: 1000;
+    }
+
+    .cart h2 {
+      color: #00bfff;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .cart ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .cart li {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .cart li span {
+      color: #00bfff;
+    }
+
+    .cart .total {
+      font-weight: bold;
+      margin-top: 1rem;
+      font-size: 1rem;
+    }
+
+    .cart button {
+      background-color: #00bfff;
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .cart button:hover {
+      background-color: #009acd;
+    }
+
     form {
       padding: 2rem 1rem;
       max-width: 400px;
@@ -153,7 +237,7 @@
       color: #00bfff;
     }
 
-    form input, form select {
+    form input, form select, form textarea {
       width: 100%;
       padding: 10px;
       margin: 8px 0;
@@ -212,34 +296,159 @@
       margin: 1rem 0;
     }
 
-    .affiliate-section {
-      background-color: #0e2a4d;
+    @media (max-width: 768px) {
+      .package-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      form {
+        width: 90%;
+      }
+
+      .cart {
+        position: static;
+        max-width: 100%;
+        margin: 1rem auto;
+      }
+    }
+  </style>
+</head>
+<body禁止
+
+System: Saya perasan terdapat ralat kecil dalam kod asal di bahagian CSS untuk `.package button`. Baris `background-color: #00b` tidak lengkap dan perlu diperbaiki kepada `background-color: #00bfff`. Saya akan memasukkan pembetulan ini dalam kod yang dikemas kini dan menamban fungsi bakul troli seperti yang diminta.
+
+Berikut adalah kod lengkap yang telah dikemas kini dengan pembetulan dan penambahan fungsi bakul troli:
+
+<xaiArtifact artifact_id="cfa05ed7-db59-42b3-b13f-9887e192ca08" artifact_version_id="d65f8c38-8399-4f80-a8be-736a93d735ea" title="index.html" contentType="text/html">
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ✅ Google Search Console Verification -->
+  <meta name="google-site-verification" content="tAlOue1TbNspSDAu26Y7AZZQhJ7qwTNYkSqBS_CQIxs" />
+
+  <!-- ✅ SEO Meta Tags -->
+  <title>Necklenj - Handmade & Unik</title>
+  <meta name="description" content="Necklenj - Koleksi produk handmade unik dan bergaya dari Malaysia.">
+  <meta name="keywords" content="necklenj, ott navigator, ott tv, ott navigator lifetime, jual id ott navigator, jual id ott tv, id ott murah, malaysia">
+  <meta name="robots" content="index, follow">
+
+  <!-- ✅ Open Graph (Paparan Cantik di WhatsApp/Facebook) -->
+  <meta property="og:title" content="Necklenj - Handmade & Unik">
+  <meta property="og:description" content="Koleksi produk handmade unik dan bergaya dari Malaysia.">
+  <meta property="og:image" content="https://mokm32.github.io/necklenj-site/images/logo.png">
+  <meta property="og:url" content="https://mokm32.github.io/necklenj-site/">
+  <meta property="og:type" content="website">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0b1d3a;
+      color: #ffffff;
+    }
+
+    header {
+      text-align: center;
       padding: 2rem 1rem;
+      background-color: #0a2540;
+      border-bottom: 3px solid #00bfff;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      color: #00bfff;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+    }
+
+    .hero {
+      background-color: #0e2a4d;
+      padding: 2rem;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .hero h2 {
+      font-size: 1.5rem;
+      color: #00bfff;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .channel-list {
+      padding: 2rem 1rem;
+      background-color: #14375d;
       text-align: center;
     }
 
-    .affiliate-section h2 {
+    .channel-list h2 {
       color: #00bfff;
       margin-bottom: 1rem;
     }
 
-    .affiliate-section p {
-      font-size: 1rem;
-      max-width: 700px;
-      margin: auto;
-      line-height: 1.6;
+    .channel-list ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
     }
 
-    .affiliate-link {
+    .channel-list li {
       background-color: #1b4e80;
-      padding: 1rem;
-      border-radius: 8px;
-      margin: 1rem auto;
-      max-width: 600px;
-      word-break: break-all;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .affiliate-link button {
+    .channel-list img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .package-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      padding: 2rem 1rem;
+    }
+
+    .package {
+      background-color: #14375d;
+      border: 1px solid #1b4e80;
+      padding: 1rem;
+      border-radius: 10px;
+      width: 260px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0, 191, 255, 0.2);
+    }
+
+    .package h3 {
+      color: #00bfff;
+    }
+
+    .package p {
+      font-size: 0.95rem;
+    }
+
+    .package button {
       margin-top: 10px;
       background-color: #00bfff;
       color: white;
@@ -250,26 +459,164 @@
       transition: 0.3s;
     }
 
-    .affiliate-link button:hover {
+    .package button:hover {
       background-color: #009acd;
     }
 
-    .admin-settings {
+    .quantity-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .quantity-controls button {
+      background-color: #00bfff;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .quantity-controls button:hover {
+      background-color: #009acd;
+    }
+
+    .quantity-controls input {
+      width: 40px;
+      text-align: center;
+      border-radius: 4px;
+      border: none;
+    }
+
+    .cart {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #14375d;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 191, 255, 0.2);
+      max-width: 300px;
+      z-index: 1000;
+    }
+
+    .cart h2 {
+      color: #00bfff;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .cart ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .cart li {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .cart li span {
+      color: #00bfff;
+    }
+
+    .cart .total {
+      font-weight: bold;
+      margin-top: 1rem;
+      font-size: 1rem;
+    }
+
+    .cart button {
+      background-color: #00bfff;
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .cart button:hover {
+      background-color: #009acd;
+    }
+
+    form {
+      padding: 2rem 1rem;
+      max-width: 400px;
+      margin: auto;
+      background-color: #0e2a4d;
+      border-radius: 10px;
+    }
+
+    form h2 {
+      text-align: center;
+      color: #00bfff;
+    }
+
+    form input, form select, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 5px;
+      border: none;
+    }
+
+    form button {
+      background-color: #00bfff;
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #009acd;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #0a2540;
+      border-top: 2px solid #00bfff;
+      font-size: 0.9rem;
+    }
+
+    a {
+      color: #00bfff;
+    }
+
+    .payment-methods {
+      text-align: center;
+      background-color: #0e2a4d;
+      padding: 2rem 1rem;
+    }
+
+    .payment-methods h2 {
+      color: #00bfff;
+    }
+
+    .payment-methods p {
+      font-size: 1rem;
+      color: #ffffff;
+    }
+
+    .payment-methods .bank-info {
+      font-size: 1.1rem;
+      color: #00bfff;
       background-color: #14375d;
       padding: 1rem;
       border-radius: 8px;
-      margin: 1rem auto;
-      max-width: 400px;
-      display: none;
-    }
-
-    .admin-settings.visible {
-      display: block;
-    }
-
-    .admin-settings input {
-      width: 100px;
-      margin: 0.5rem 0;
+      margin: 1rem 0;
     }
 
     @media (max-width: 768px) {
@@ -281,6 +628,12 @@
       form {
         width: 90%;
       }
+
+      .cart {
+        position: static;
+        max-width: 100%;
+        margin: 1rem auto;
+      }
     }
   </style>
 </head>
@@ -289,6 +642,13 @@
     <h1>NeckleNj</h1>
     <p>Jual ID OTT Navigator + VOD Lifetime</p>
   </header>
+
+  <div class="cart" id="cart">
+    <h2>Bakul Troli</h2>
+    <ul id="cart-items"></ul>
+    <div class="total">Jumlah: RM <span id="cart-total">0.00</span></div>
+    <button onclick="proceedToOrder()">Tempah Sekarang</button>
+  </div>
 
   <section class="hero">
     <h2>🎬 Selamat Datang ke website NeckleNj – Hiburan Tanpa Batasan!</h2>
@@ -322,7 +682,7 @@
       <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="News"/> News</li>
       <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Documentary"/> Documentary</li>
       <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Arab"/> Arab</li>
-      <li><img src="https://klinj-site/"></a>
+      <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Brunei"/> Brunei</li>
       <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Entertainment"/> Entertainment</li>
       <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Fast Channel"/> Fast Channel</li>
       <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Korean"/> Korean</li>
@@ -338,50 +698,71 @@
       <h3>Pakej 1</h3>
       <p>1 ID untuk 1 Peranti</p>
       <p><strong>RM8.00</strong> Lifetime</p>
-      <p id="commission-pakej1"></p>
-      <button onclick="fillPackage('Pakej 1 - RM8.00')">Tempah Sekarang</button>
+      <div class="quantity-controls">
+        <button onclick="updateQuantity('Pakej 1', -1)">-</button>
+        <input type="number" id="qty-Pakej 1" value="0" min="0" onchange="updateCart('Pakej 1', this.value)">
+        <button onclick="updateQuantity('Pakej 1', 1)">+</button>
+      </div>
     </div>
     <div class="package">
       <h3>Pakej 2</h3>
       <p>1 ID untuk 2 Peranti</p>
       <p><strong>RM16.00</strong> Lifetime</p>
-      <p id="commission-pakej2"></p>
-      <button onclick="fillPackage('Pakej 2 - RM16.00')">Tempah Sekarang</button>
+      <div class="quantity-controls">
+        <button onclick="updateQuantity('Pakej 2', -1)">-</button>
+        <input type="number" id="qty-Pakej 2" value="0" min="0" onchange="updateCart('Pakej 2', this.value)">
+        <button onclick="updateQuantity('Pakej 2', 1)">+</button>
+      </div>
     </div>
     <div class="package">
       <h3>Pakej 3</h3>
       <p>1 ID untuk 3 Peranti</p>
       <p><strong>RM24.00</strong> Lifetime</p>
-      <p id="commission-pakej3"></p>
-      <button onclick="fillPackage('Pakej 3 - RM24.00')">Tempah Sekarang</button>
+      <div class="quantity-controls">
+        <button onclick="updateQuantity('Pakej 3', -1)">-</button>
+        <input type="number" id="qty-Pakej 3" value="0" min="0" onchange="updateCart('Pakej 3', this.value)">
+        <button onclick="updateQuantity('Pakej 3', 1)">+</button>
+      </div>
     </div>
     <div class="package">
       <h3>Pakej 4</h3>
       <p>1 ID untuk 4 Peranti</p>
       <p><strong>RM32.00</strong> Lifetime</p>
-      <p id="commission-pakej4"></p>
-      <button onclick="fillPackage('Pakej 4 - RM32.00')">Tempah Sekarang</button>
+      <div class="quantity-controls">
+        <button onclick="updateQuantity('Pakej 4', -1)">-</button>
+        <input type="number" id="qty-Pakej 4" value="0" min="0" onchange="updateCart('Pakej 4', this.value)">
+        <button onclick="updateQuantity('Pakej 4', 1)">+</button>
+      </div>
     </div>
     <div class="package">
       <h3>Pakej Agen A</h3>
       <p>1 ID untuk 20 Peranti</p>
       <p><strong>RM150.00</strong> Lifetime</p>
-      <p id="commission-pakej-agen-a"></p>
-      <button onclick="fillPackage('Pakej Agen A - RM150.00')">Tempah Sekarang</button>
+      <div class="quantity-controls">
+        <button onclick="updateQuantity('Pakej Agen A', -1)">-</button>
+        <input type="number" id="qty-Pakej Agen A" value="0" min="0" onchange="updateCart('Pakej Agen A', this.value)">
+        <button onclick="updateQuantity('Pakej Agen A', 1)">+</button>
+      </div>
     </div>
     <div class="package">
       <h3>Pakej Agen B</h3>
       <p>1 ID untuk 50 Peranti</p>
       <p><strong>RM325.00</strong> Lifetime</p>
-      <p id="commission-pakej-agen-b"></p>
-      <button onclick="fillPackage('Pakej Agen B - RM325.00')">Tempah Sekarang</button>
+      <div class="quantity-controls">
+        <button onclick="updateQuantity('Pakej Agen B', -1)">-</button>
+        <input type="number" id="qty-Pakej Agen B" value="0" min="0" onchange="updateCart('Pakej Agen B', this.value)">
+        <button onclick="updateQuantity('Pakej Agen B', 1)">+</button>
+      </div>
     </div>
     <div class="package">
       <h3>Pakej Agen C</h3>
       <p>1 ID untuk 100 Peranti</p>
       <p><strong>RM600.00</strong> Lifetime</p>
-      <p id="commission-pakej-agen-c"></p>
-      <button onclick="fillPackage('Pakej Agen C - RM600.00')">Tempah Sekarang</button>
+      <div class="quantity-controls">
+        <button onclick="updateQuantity('Pakej Agen C', -1)">-</button>
+        <input type="number" id="qty-Pakej Agen C" value="0" min="0" onchange="updateCart('Pakej Agen C', this.value)">
+        <button onclick="updateQuantity('Pakej Agen C', 1)">+</button>
+      </div>
     </div>
   </section>
 
@@ -389,47 +770,9 @@
     <h2>Borang Tempahan</h2>
     <input type="text" id="nama" placeholder="Nama Penuh" required>
     <input type="text" id="telefon" placeholder="No Telefon" required>
-    <input type="text" id="affiliateCode" placeholder="Kod Affiliate (Jika Ada)">
-    <select id="pakej" required>
-      <option value="">Pilih Pakej</option>
-      <option value="Pakej 1 - RM8.00">Pakej 1 - RM8.00</option>
-      <option value="Pakej 2 - RM16.00">Pakej 2 - RM16.00</option>
-      <option value="Pakej 3 - RM24.00">Pakej 3 - RM24.00</option>
-      <option value="Pakej 4 - RM32.00">Pakej 4 - RM32.00</option>
-      <option value="Pakej Agen A - RM150.00">Pakej Agen A - RM150.00</option>
-      <option value="Pakej Agen B - RM325.00">Pakej Agen B - RM325.00</option>
-      <option value="Pakej Agen C - RM600.00">Pakej Agen C - RM600.00</option>
-    </select>
+    <textarea id="pakej" placeholder="Butiran Pakej" readonly></textarea>
     <button type="submit">Hantar ke WhatsApp</button>
   </form>
-
-  <section class="affiliate-section">
-    <h2>🌟 Sertai Program Affiliate NeckleNj!</h2>
-    <p>
-      Sertai program affiliate kami dan dapatkan komisen untuk setiap jualan yang dibuat melalui pautan affiliate anda! Hanya promosikan produk kami dan nikmati pendapatan pasif. Daftar sekarang untuk mendapatkan kod affiliate unik anda yang boleh dikongsi di WhatsApp, Facebook, Instagram, atau mana-mana platform!
-    </p>
-    <p>Peratusan Komisen Semasa: <strong id="currentCommissionRate"></strong>%</p>
-    <form id="affiliateForm" onsubmit="registerAffiliate(event)">
-      <h2>Pendaftaran Affiliate</h2>
-      <input type="text" id="affiliateName" placeholder="Nama Penuh" required>
-      <input type="text" id="affiliatePhone" placeholder="No Telefon" required>
-      <input type="email" id="affiliateEmail" placeholder="Email" required>
-      <button type="submit">Daftar Sebagai Affiliate</button>
-    </form>
-    <div id="affiliateLink" class="affiliate-link" style="display: none;">
-      <p>Kod Affiliate Anda: <strong id="affiliateCodeDisplay"></strong></p>
-      <p>Pautan Affiliate Anda: <strong id="affiliateLinkDisplay"></strong></p>
-      <button onclick="copyAffiliateLink()">Salin Pautan Affiliate</button>
-      <button onclick="shareAffiliateLink()">Kongsi Pautan Affiliate</button>
-    </div>
-    <div class="admin-settings">
-      <h2>Tetapan Admin (Peratusan Komisen)</h2>
-      <input type="password" id="adminPassword" placeholder="Kata Laluan Admin" required>
-      <input type="number" id="commissionRate" placeholder="Masukkan % Komisen" min="0" max="100" required>
-      <button onclick="setCommissionRate()">Simpan Peratusan Komisen</button>
-    </div>
-    <button onclick="toggleAdminSettings()">Akses Tetapan Admin</button>
-  </section>
 
   <section class="payment-methods">
     <h2>Kaedah Pembayaran</h2>
@@ -450,164 +793,85 @@
   </footer>
 
   <script>
-    // Objek untuk harga pakej
-    const packagePrices = {
-      'Pakej 1 - RM8.00': 8.00,
-      'Pakej 2 - RM16.00': 16.00,
-      'Pakej 3 - RM24.00': 24.00,
-      'Pakej 4 - RM32.00': 32.00,
-      'Pakej Agen A - RM150.00': 150.00,
-      'Pakej Agen B - RM325.00': 325.00,
-      'Pakej Agen C - RM600.00': 600.00
+    const packages = {
+      'Pakej 1': 8.00,
+      'Pakej 2': 16.00,
+      'Pakej 3': 24.00,
+      'Pakej 4': 32.00,
+      'Pakej Agen A': 150.00,
+      'Pakej Agen B': 325.00,
+      'Pakej Agen C': 600.00
     };
 
-    // Senarai nombor telefon affiliate yang telah didaftarkan (simpanan ringkas)
-    let registeredPhones = JSON.parse(localStorage.getItem('registeredPhones')) || [];
+    let cart = {};
 
-    // Fungsi untuk memaparkan komisen dan peratusan semasa
-    function displayCommissions() {
-      const commissionRate = localStorage.getItem('commissionRate') || 10; // Default 10%
-      document.getElementById('currentCommissionRate').textContent = commissionRate;
-      Object.keys(packagePrices).forEach(pakej => {
-        const commission = (packagePrices[pakej] * commissionRate / 100).toFixed(2);
-        const elementId = `commission-${pakej.toLowerCase().replace(/\s/g, '-').replace('rm', 'rm')}`;
-        const element = document.getElementById(elementId);
-        if (element) {
-          element.textContent = `Komisen Affiliate: RM${commission}`;
+    function updateCart(packageName, quantity) {
+      quantity = parseInt(quantity) || 0;
+      if (quantity < 0) quantity = 0;
+      cart[packageName] = quantity;
+      if (quantity === 0) delete cart[packageName];
+      updateCartDisplay();
+    }
+
+    function updateQuantity(packageName, change) {
+      const input = document.getElementById(`qty-${packageName}`);
+      let quantity = parseInt(input.value) + change;
+      if (quantity < 0) quantity = 0;
+      input.value = quantity;
+      updateCart(packageName, quantity);
+    }
+
+    function updateCartDisplay() {
+      const cartItems = document.getElementById('cart-items');
+      const cartTotal = document.getElementById('cart-total');
+      cartItems.innerHTML = '';
+      let total = 0;
+
+      for (const [pkg, qty] of Object.entries(cart)) {
+        if (qty > 0) {
+          const price = packages[pkg] * qty;
+          total += price;
+          const li = document.createElement('li');
+          li.innerHTML = `${pkg} x${qty} <span>RM ${price.toFixed(2)}</span>`;
+          cartItems.appendChild(li);
         }
-      });
+      }
+
+      cartTotal.textContent = total.toFixed(2);
     }
 
-    // Fungsi untuk menunjukkan/sembunyikan tetapan admin
-    function toggleAdminSettings() {
-      const adminSettings = document.querySelector('.admin-settings');
-      const password = prompt('Masukkan kata laluan admin:');
-      if (password === 'nj111112') {
-        adminSettings.classList.add('visible');
-      } else {
-        alert('Kata laluan admin salah!');
-      }
-    }
-
-    // Fungsi untuk menetapkan peratusan komisen
-    function setCommissionRate() {
-      const password = document.getElementById('adminPassword').value;
-      if (password !== 'nj111112') {
-        alert('Kata laluan admin salah!');
-        return;
-      }
-      const rate = document.getElementById('commissionRate').value;
-      if (rate >= 0 && rate <= 100) {
-        localStorage.setItem('commissionRate', rate);
-        alert(`Peratusan komisen ditetapkan kepada ${rate}%`);
-        displayCommissions();
-      } else {
-        alert('Sila masukkan peratusan antara 0 hingga 100');
-      }
-      document.getElementById('adminPassword').value = '';
-      document.getElementById('commissionRate').value = '';
-      document.querySelector('.admin-settings').classList.remove('visible');
-    }
-
-    // Fungsi untuk mendaftar affiliate
-    function registerAffiliate(e) {
-      e.preventDefault();
-      const name = document.getElementById('affiliateName').value;
-      const phone = document.getElementById('affiliatePhone').value;
-      const email = document.getElementById('affiliateEmail').value;
-
-      // Semak jika nombor telefon sudah didaftarkan
-      if (registeredPhones.includes(phone)) {
-        alert('Nombor telefon ini sudah didaftarkan sebagai affiliate!');
+    function proceedToOrder() {
+      if (Object.keys(cart).length === 0) {
+        alert('Bakul troli kosong. Sila tambah pakej terlebih dahulu.');
         return;
       }
 
-      // Menjana kod affiliate unik
-      const affiliateCode = btoa(name + phone).slice(0, 8);
-      const affiliateLink = `${window.location.origin}?affiliate=${affiliateCode}`;
-
-      // Simpan nombor telefon dalam senarai
-      registeredPhones.push(phone);
-      localStorage.setItem('registeredPhones', JSON.stringify(registeredPhones));
-
-      // Memaparkan kod dan pautan affiliate
-      document.getElementById('affiliateCodeDisplay').textContent = affiliateCode;
-      document.getElementById('affiliateLinkDisplay').textContent = affiliateLink;
-      document.getElementById('affiliateLink').style.display = 'block';
-
-      // Menghantar butiran pendaftaran ke WhatsApp
-      const msg = `Pendaftaran Affiliate Baru:\nNama: ${name}\nTelefon: ${phone}\nEmail: ${email}\nKod Affiliate: ${affiliateCode}\nPautan Affiliate: ${affiliateLink}`;
-      const url = `https://wa.me/601136237443?text=${encodeURIComponent(msg)}`;
-      window.open(url, '_blank');
-
-      // Kosongkan borang
-      document.getElementById('affiliateForm').reset();
-    }
-
-    // Fungsi untuk menyalin pautan affiliate
-    function copyAffiliateLink() {
-      const affiliateLink = document.getElementById('affiliateLinkDisplay').textContent;
-      navigator.clipboard.writeText(affiliateLink).then(() => {
-        alert('Pautan affiliate telah disalin ke papan klip!');
-      }).catch(err => {
-        alert('Gagal menyalin pautan. Sila salin secara manual.');
-      });
-    }
-
-    // Fungsi untuk berkongsi pautan affiliate
-    function shareAffiliateLink() {
-      const affiliateLink = document.getElementById('affiliateLinkDisplay').textContent;
-      const shareText = `Sertai NeckleNj dan nikmati hiburan tanpa batasan! Gunakan pautan saya untuk mendapatkan akses: ${affiliateLink}`;
-      if (navigator.share) {
-        navigator.share({
-          title: 'Sertai NeckleNj!',
-          text: shareText,
-          url: affiliateLink
-        }).catch(err => {
-          alert('Gagal berkongsi pautan. Sila kongsikan secara manual.');
-        });
-      } else {
-        alert('Fungsi kongsi tidak disokong pada pelayar ini. Sila salin pautan dan kongsikan secara manual.');
+      let orderDetails = '';
+      let total = 0;
+      for (const [pkg, qty] of Object.entries(cart)) {
+        if (qty > 0) {
+          const price = packages[pkg] * qty;
+          total += price;
+          orderDetails += `${pkg} x${qty}: RM ${price.toFixed(2)}\n`;
+        }
       }
-    }
+      orderDetails += `Jumlah: RM ${total.toFixed(2)}`;
 
-    // Fungsi untuk mengisi pakej
-    function fillPackage(value) {
-      document.getElementById('pakej').value = value;
-      // Isi kod affiliate dari URL jika ada
-      const urlParams = new URLSearchParams(window.location.search);
-      const affiliateCode = urlParams.get('affiliate');
-      if (affiliateCode) {
-        document.getElementById('affiliateCode').value = affiliateCode;
-      }
+      const pakejInput = document.getElementById('pakej');
+      pakejInput.value = orderDetails;
+
       window.scrollTo({ top: document.getElementById('orderForm').offsetTop - 20, behavior: 'smooth' });
     }
 
-    // Fungsi untuk menghantar tempahan
     function submitOrder(e) {
       e.preventDefault();
       const nama = document.getElementById('nama').value;
       const telefon = document.getElementById('telefon').value;
       const pakej = document.getElementById('pakej').value;
-      const affiliateCode = document.getElementById('affiliateCode').value;
-      const commissionRate = localStorage.getItem('commissionRate') || 10;
-      const commission = (packagePrices[pakej] * commissionRate / 100).toFixed(2);
-
-      const msg = `Tempahan Baru:\nNama: ${nama}\nTelefon: ${telefon}\nPakej: ${pakej}\nKod Affiliate: ${affiliateCode || 'Tiada'}\nKomisen Affiliate: RM${commission}`;
+      const msg = `Tempahan Baru:\nNama: ${nama}\nTelefon: ${telefon}\nPakej:\n${pakej}`;
       const url = `https://wa.me/601136237443?text=${encodeURIComponent(msg)}`;
       window.open(url, '_blank');
     }
-
-    // Memaparkan komisen semasa laman dimuat
-    window.onload = function() {
-      displayCommissions();
-      // Isi kod affiliate dari URL jika ada
-      const urlParams = new URLSearchParams(window.location.search);
-      const affiliateCode = urlParams.get('affiliate');
-      if (affiliateCode) {
-        document.getElementById('affiliateCode').value = affiliateCode;
-      }
-    };
   </script>
 </body>
 </html>
