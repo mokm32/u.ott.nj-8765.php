@@ -245,6 +245,11 @@
       border-radius: 8px;
       margin: 1rem auto;
       max-width: 400px;
+      display: none; /* Tersembunyi secara lalai */
+    }
+
+    .admin-settings.visible {
+      display: block;
     }
 
     .admin-settings input {
@@ -267,9 +272,7 @@
 <body>
   <header>
     <h1>NeckleNj</h1>
-    <p>J
-
-ual ID OTT Navigator + VOD Lifetime</p>
+    <p>Jual ID OTT Navigator + VOD Lifetime</p>
   </header>
 
   <section class="hero">
@@ -302,7 +305,7 @@ ual ID OTT Navigator + VOD Lifetime</p>
       <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="India"/> India</li>
       <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Indonesia"/> Indonesia</li>
       <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="News"/> News</li>
-      <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Documentary"/> Documentary</li>
+      <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Documentaky"/> Documentary</li>
       <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Arab"/> Arab</li>
       <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Brunei"/> Brunei</li>
       <li><img src="https://i.ibb.co/mrNKFM6V/Untitled-design.png" alt="Entertainment"/> Entertainment</li>
@@ -345,7 +348,7 @@ ual ID OTT Navigator + VOD Lifetime</p>
       <button onclick="fillPackage('Pakej 4 - RM32.00')">Tempah Sekarang</button>
     </div>
     <div class="package">
-      <h3>Pakej Agen A</h3>
+      <h3>P4kej Agen A</h3>
       <p>1 ID untuk 20 Peranti</p>
       <p><strong>RM150.00</strong> Lifetime</p>
       <p id="commission-pakej-agen-a"></p>
@@ -390,6 +393,7 @@ ual ID OTT Navigator + VOD Lifetime</p>
     <p>
       Sertai program affiliate kami dan dapatkan komisen untuk setiap jualan yang dibuat melalui pautan affiliate anda! Hanya promosikan produk kami dan nikmati pendapatan pasif. Daftar sekarang untuk mendapatkan kod affiliate unik anda!
     </p>
+    <p>Peratusan Komisen Semasa: <strong id="currentCommissionRate"></strong>%</p>
     <form id="affiliateForm" onsubmit="registerAffiliate(event)">
       <h2>Pendaftaran Affiliate</h2>
       <input type="text" id="affiliateName" placeholder="Nama Penuh" required>
@@ -403,9 +407,11 @@ ual ID OTT Navigator + VOD Lifetime</p>
     </div>
     <div class="admin-settings">
       <h2>Tetapan Admin (Peratusan Komisen)</h2>
+      <input type="password" id="adminPassword" placeholder="Kata Laluan Admin" required>
       <input type="number" id="commissionRate" placeholder="Masukkan % Komisen" min="0" max="100" required>
       <button onclick="setCommissionRate()">Simpan Peratusan Komisen</button>
     </div>
+    <button onclick="toggleAdminSettings()">Akses Tetapan Admin</button>
   </section>
 
   <section class="payment-methods">
@@ -438,9 +444,13 @@ ual ID OTT Navigator + VOD Lifetime</p>
       'Pakej Agen C - RM600.00': 600.00
     };
 
-    // Fungsi untuk mengira dan memaparkan komisen
+    // Senarai nombor telefon affiliate yang telah didaftarkan (simpanan ringkas)
+    let registeredPhones = JSON.parse(localStorage.getItem('registeredPhones')) || [];
+
+    // Fungsi untuk memaparkan komisen dan peratusan semasa
     function displayCommissions() {
       const commissionRate = localStorage.getItem('commissionRate') || 10; // Default 10%
+      document.getElementById('currentCommissionRate').textContent = commissionRate;
       Object.keys(packagePrices).forEach(pakej => {
         const commission = (packagePrices[pakej] * commissionRate / 100).toFixed(2);
         const elementId = `commission-${pakej.toLowerCase().replace(/\s/g, '-').replace('rm', 'rm')}`;
@@ -451,8 +461,25 @@ ual ID OTT Navigator + VOD Lifetime</p>
       });
     }
 
+    // Fungsi untuk menunjukkan/sembunyikan tetapan admin
+    function toggleAdminSettings() {
+      const adminSettings = document.querySelector('.admin-settings');
+      const password = prompt('Masukkan kata laluan admin:');
+      // Kata laluan ringkas untuk demo (dalam pelaksanaan sebenar, gunakan kaedah yang lebih selamat)
+      if (password === 'admin123') {
+        adminSettings.classList.add('visible');
+      } else {
+        alert('Kata laluan admin salah!');
+      }
+    }
+
     // Fungsi untuk menetapkan peratusan komisen
     function setCommissionRate() {
+      const password = document.getElementById('adminPassword').value;
+      if (password !== 'admin123') {
+        alert('Kata laluan admin salah!');
+        return;
+      }
       const rate = document.getElementById('commissionRate').value;
       if (rate >= 0 && rate <= 100) {
         localStorage.setItem('commissionRate', rate);
@@ -461,6 +488,9 @@ ual ID OTT Navigator + VOD Lifetime</p>
       } else {
         alert('Sila masukkan peratusan antara 0 hingga 100');
       }
+      document.getElementById('adminPassword').value = '';
+      document.getElementById('commissionRate').value = '';
+      document.querySelector('.admin-settings').classList.remove('visible');
     }
 
     // Fungsi untuk mendaftar affiliate
@@ -469,21 +499,31 @@ ual ID OTT Navigator + VOD Lifetime</p>
       const name = document.getElementById('affiliateName').value;
       const phone = document.getElementById('affiliatePhone').value;
       const email = document.getElementById('affiliateEmail').value;
-      
-      // Menjana kod affiliate unik (contoh ringkas)
+
+      // Semak jika nombor telefon sudah didaftarkan
+      if (registeredPhones.includes(phone)) {
+        alert('Nombor telefon ini sudah didaftarkan sebagai affiliate!');
+        return;
+      }
+
+      // Menjana kod affiliate unik
       const affiliateCode = btoa(name + phone).slice(0, 8);
       const affiliateLink = `${window.location.origin}?affiliate=${affiliateCode}`;
-      
+
+      // Simpan nombor telefon dalam senarai
+      registeredPhones.push(phone);
+      localStorage.setItem('registeredPhones', JSON.stringify(registeredPhones));
+
       // Memaparkan kod dan pautan affiliate
       document.getElementById('affiliateCodeDisplay').textContent = affiliateCode;
       document.getElementById('affiliateLinkDisplay').textContent = affiliateLink;
       document.getElementById('affiliateLink').style.display = 'block';
-      
+
       // Menghantar butiran pendaftaran ke WhatsApp
       const msg = `Pendaftaran Affiliate Baru:\nNama: ${name}\nTelefon: ${phone}\nEmail: ${email}\nKod Affiliate: ${affiliateCode}`;
       const url = `https://wa.me/601136237443?text=${encodeURIComponent(msg)}`;
       window.open(url, '_blank');
-      
+
       // Kosongkan borang
       document.getElementById('affiliateForm').reset();
     }
@@ -503,7 +543,7 @@ ual ID OTT Navigator + VOD Lifetime</p>
       const affiliateCode = document.getElementById('affiliateCode').value;
       const commissionRate = localStorage.getItem('commissionRate') || 10;
       const commission = (packagePrices[pakej] * commissionRate / 100).toFixed(2);
-      
+
       const msg = `Tempahan Baru:\nNama: ${nama}\nTelefon: ${telefon}\nPakej: ${pakej}\nKod Affiliate: ${affiliateCode || 'Tiada'}\nKomisen Affiliate: RM${commission}`;
       const url = `https://wa.me/601136237443?text=${encodeURIComponent(msg)}`;
       window.open(url, '_blank');
