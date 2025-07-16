@@ -1,9 +1,26 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NeckleNj | Jual ID OTT Navigator Lifetime + VOD</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ✅ Google Search Console Verification -->
+  <meta name="google-site-verification" content="tAlOue1TbNspSDAu26Y7AZZQhJ7qwTNYkSqBS_CQIxs" />
+
+  <!-- ✅ SEO Meta Tags -->
+  <title>Necklenj - Handmade & Unik</title>
+  <meta name="description" content="Necklenj - Koleksi produk handmade unik dan bergaya dari Malaysia.">
+  <meta name="keywords" content="necklenj, ott navigator, ott tv, ott navigator lifetime, jual id ott navigator, jual id ott tv, id ott murah, malaysia">
+  <meta name="robots" content="index, follow">
+
+  <!-- ✅ Open Graph (Paparan Cantik di WhatsApp/Facebook) -->
+  <meta property="og:title" content="Necklenj - Handmade & Unik">
+  <meta property="og:description" content="Koleksi produk handmade unik dan bergaya dari Malaysia.">
+  <meta property="og:image" content="https://mokm32.github.io/necklenj-site/images/logo.png">
+  <meta property="og:url" content="https://mokm32.github.io/necklenj-site/">
+  <meta property="og:type" content="website">
+  
   <style>
     body {
       margin: 0;
@@ -195,6 +212,46 @@
       margin: 1rem 0;
     }
 
+    .affiliate-section {
+      background-color: #0e2a4d;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    .affiliate-section h2 {
+      color: #00bfff;
+      margin-bottom: 1rem;
+    }
+
+    .affiliate-section p {
+      font-size: 1rem;
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    .affiliate-link {
+      background-color: #1b4e80;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem auto;
+      max-width: 600px;
+      word-break: break-all;
+    }
+
+    .admin-settings {
+      background-color: #14375d;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem auto;
+      max-width: 400px;
+    }
+
+    .admin-settings input {
+      width: 100px;
+      margin: 0.5rem 0;
+    }
+
     @media (max-width: 768px) {
       .package-container {
         flex-direction: column;
@@ -210,7 +267,9 @@
 <body>
   <header>
     <h1>NeckleNj</h1>
-    <p>Jual ID OTT Navigator + VOD Lifetime</p>
+    <p>J
+
+ual ID OTT Navigator + VOD Lifetime</p>
   </header>
 
   <section class="hero">
@@ -261,25 +320,50 @@
       <h3>Pakej 1</h3>
       <p>1 ID untuk 1 Peranti</p>
       <p><strong>RM8.00</strong> Lifetime</p>
+      <p id="commission-pakej1"></p>
       <button onclick="fillPackage('Pakej 1 - RM8.00')">Tempah Sekarang</button>
     </div>
     <div class="package">
       <h3>Pakej 2</h3>
       <p>1 ID untuk 2 Peranti</p>
       <p><strong>RM16.00</strong> Lifetime</p>
+      <p id="commission-pakej2"></p>
       <button onclick="fillPackage('Pakej 2 - RM16.00')">Tempah Sekarang</button>
     </div>
     <div class="package">
       <h3>Pakej 3</h3>
       <p>1 ID untuk 3 Peranti</p>
       <p><strong>RM24.00</strong> Lifetime</p>
+      <p id="commission-pakej3"></p>
       <button onclick="fillPackage('Pakej 3 - RM24.00')">Tempah Sekarang</button>
     </div>
     <div class="package">
       <h3>Pakej 4</h3>
       <p>1 ID untuk 4 Peranti</p>
       <p><strong>RM32.00</strong> Lifetime</p>
+      <p id="commission-pakej4"></p>
       <button onclick="fillPackage('Pakej 4 - RM32.00')">Tempah Sekarang</button>
+    </div>
+    <div class="package">
+      <h3>Pakej Agen A</h3>
+      <p>1 ID untuk 20 Peranti</p>
+      <p><strong>RM150.00</strong> Lifetime</p>
+      <p id="commission-pakej-agen-a"></p>
+      <button onclick="fillPackage('Pakej Agen A - RM150.00')">Tempah Sekarang</button>
+    </div>
+    <div class="package">
+      <h3>Pakej Agen B</h3>
+      <p>1 ID untuk 50 Peranti</p>
+      <p><strong>RM325.00</strong> Lifetime</p>
+      <p id="commission-pakej-agen-b"></p>
+      <button onclick="fillPackage('Pakej Agen B - RM325.00')">Tempah Sekarang</button>
+    </div>
+    <div class="package">
+      <h3>Pakej Agen C</h3>
+      <p>1 ID untuk 100 Peranti</p>
+      <p><strong>RM600.00</strong> Lifetime</p>
+      <p id="commission-pakej-agen-c"></p>
+      <button onclick="fillPackage('Pakej Agen C - RM600.00')">Tempah Sekarang</button>
     </div>
   </section>
 
@@ -287,29 +371,54 @@
     <h2>Borang Tempahan</h2>
     <input type="text" id="nama" placeholder="Nama Penuh" required>
     <input type="text" id="telefon" placeholder="No Telefon" required>
+    <input type="text" id="affiliateCode" placeholder="Kod Affiliate (Jika Ada)">
     <select id="pakej" required>
       <option value="">Pilih Pakej</option>
       <option value="Pakej 1 - RM8.00">Pakej 1 - RM8.00</option>
       <option value="Pakej 2 - RM16.00">Pakej 2 - RM16.00</option>
       <option value="Pakej 3 - RM24.00">Pakej 3 - RM24.00</option>
       <option value="Pakej 4 - RM32.00">Pakej 4 - RM32.00</option>
+      <option value="Pakej Agen A - RM150.00">Pakej Agen A - RM150.00</option>
+      <option value="Pakej Agen B - RM325.00">Pakej Agen B - RM325.00</option>
+      <option value="Pakej Agen C - RM600.00">Pakej Agen C - RM600.00</option>
     </select>
     <button type="submit">Hantar ke WhatsApp</button>
   </form>
 
-  <section class="payment-methods">
-  <h2>Kaedah Pembayaran</h2>
-  <div class="bank-info">
-    <!-- Gambar boleh ditekan dan dibuka dalam tab baru -->
-    <a href="https://i.ibb.co/0jtvDs9h/photo-2025-05-23-20-36-48.jpg" target="_blank">
-      <img src="https://i.ibb.co/0jtvDs9h/photo-2025-05-23-20-36-48.jpg" alt="Bukti Pembayaran" style="width: 200px; height: auto; margin-bottom: 10px; border-radius: 8px;">
-    </a>
+  <section class="affiliate-section">
+    <h2>🌟 Sertai Program Affiliate NeckleNj!</h2>
+    <p>
+      Sertai program affiliate kami dan dapatkan komisen untuk setiap jualan yang dibuat melalui pautan affiliate anda! Hanya promosikan produk kami dan nikmati pendapatan pasif. Daftar sekarang untuk mendapatkan kod affiliate unik anda!
+    </p>
+    <form id="affiliateForm" onsubmit="registerAffiliate(event)">
+      <h2>Pendaftaran Affiliate</h2>
+      <input type="text" id="affiliateName" placeholder="Nama Penuh" required>
+      <input type="text" id="affiliatePhone" placeholder="No Telefon" required>
+      <input type="email" id="affiliateEmail" placeholder="Email" required>
+      <button type="submit">Daftar Sebagai Affiliate</button>
+    </form>
+    <div id="affiliateLink" class="affiliate-link" style="display: none;">
+      <p>Kod Affiliate Anda: <strong id="affiliateCodeDisplay"></strong></p>
+      <p>Pautan Affiliate Anda: <strong id="affiliateLinkDisplay"></strong></p>
+    </div>
+    <div class="admin-settings">
+      <h2>Tetapan Admin (Peratusan Komisen)</h2>
+      <input type="number" id="commissionRate" placeholder="Masukkan % Komisen" min="0" max="100" required>
+      <button onclick="setCommissionRate()">Simpan Peratusan Komisen</button>
+    </div>
+  </section>
 
-    <p><strong>Bank: Hong Leong Bank</strong></p>
-    <p><strong>No. Akaun: 15350801844</strong></p>
-    <p>Sila buat pembayaran melalui <strong>online transfer</strong> ke akaun di atas dan hantar bukti pembayaran kepada kami melalui WhatsApp.</p>
-  </div>
-</section>
+  <section class="payment-methods">
+    <h2>Kaedah Pembayaran</h2>
+    <div class="bank-info">
+      <a href="https://i.ibb.co/0jtvDs9h/photo-2025-05-23-20-36-48.jpg" target="_blank">
+        <img src="https://i.ibb.co/0jtvDs9h/photo-2025-05-23-20-36-48.jpg" alt="Bukti Pembayaran" style="width: 200px; height: auto; margin-bottom: 10px; border-radius: 8px;">
+      </a>
+      <p><strong>Bank: Hong Leong Bank</strong></p>
+      <p><strong> - </strong></p>
+      <p>Sila buat pembayaran melalui <strong>QR Payment</strong> ke akaun di atas dan hantar bukti pembayaran kepada kami melalui WhatsApp.</p>
+    </div>
+  </section>
 
   <footer>
     📞 Hubungi: <a href="tel:+601136237443">011-3623 7443</a><br/>
@@ -318,20 +427,90 @@
   </footer>
 
   <script>
+    // Objek untuk harga pakej
+    const packagePrices = {
+      'Pakej 1 - RM8.00': 8.00,
+      'Pakej 2 - RM16.00': 16.00,
+      'Pakej 3 - RM24.00': 24.00,
+      'Pakej 4 - RM32.00': 32.00,
+      'Pakej Agen A - RM150.00': 150.00,
+      'Pakej Agen B - RM325.00': 325.00,
+      'Pakej Agen C - RM600.00': 600.00
+    };
+
+    // Fungsi untuk mengira dan memaparkan komisen
+    function displayCommissions() {
+      const commissionRate = localStorage.getItem('commissionRate') || 10; // Default 10%
+      Object.keys(packagePrices).forEach(pakej => {
+        const commission = (packagePrices[pakej] * commissionRate / 100).toFixed(2);
+        const elementId = `commission-${pakej.toLowerCase().replace(/\s/g, '-').replace('rm', 'rm')}`;
+        const element = document.getElementById(elementId);
+        if (element) {
+          element.textContent = `Komisen Affiliate: RM${commission}`;
+        }
+      });
+    }
+
+    // Fungsi untuk menetapkan peratusan komisen
+    function setCommissionRate() {
+      const rate = document.getElementById('commissionRate').value;
+      if (rate >= 0 && rate <= 100) {
+        localStorage.setItem('commissionRate', rate);
+        alert(`Peratusan komisen ditetapkan kepada ${rate}%`);
+        displayCommissions();
+      } else {
+        alert('Sila masukkan peratusan antara 0 hingga 100');
+      }
+    }
+
+    // Fungsi untuk mendaftar affiliate
+    function registerAffiliate(e) {
+      e.preventDefault();
+      const name = document.getElementById('affiliateName').value;
+      const phone = document.getElementById('affiliatePhone').value;
+      const email = document.getElementById('affiliateEmail').value;
+      
+      // Menjana kod affiliate unik (contoh ringkas)
+      const affiliateCode = btoa(name + phone).slice(0, 8);
+      const affiliateLink = `${window.location.origin}?affiliate=${affiliateCode}`;
+      
+      // Memaparkan kod dan pautan affiliate
+      document.getElementById('affiliateCodeDisplay').textContent = affiliateCode;
+      document.getElementById('affiliateLinkDisplay').textContent = affiliateLink;
+      document.getElementById('affiliateLink').style.display = 'block';
+      
+      // Menghantar butiran pendaftaran ke WhatsApp
+      const msg = `Pendaftaran Affiliate Baru:\nNama: ${name}\nTelefon: ${phone}\nEmail: ${email}\nKod Affiliate: ${affiliateCode}`;
+      const url = `https://wa.me/601136237443?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+      
+      // Kosongkan borang
+      document.getElementById('affiliateForm').reset();
+    }
+
+    // Fungsi untuk mengisi pakej
     function fillPackage(value) {
       document.getElementById('pakej').value = value;
       window.scrollTo({ top: document.getElementById('orderForm').offsetTop - 20, behavior: 'smooth' });
     }
 
+    // Fungsi untuk menghantar tempahan
     function submitOrder(e) {
       e.preventDefault();
       const nama = document.getElementById('nama').value;
       const telefon = document.getElementById('telefon').value;
       const pakej = document.getElementById('pakej').value;
-      const msg = `Tempahan Baru:\nNama: ${nama}\nTelefon: ${telefon}\nPakej: ${pakej}`;
+      const affiliateCode = document.getElementById('affiliateCode').value;
+      const commissionRate = localStorage.getItem('commissionRate') || 10;
+      const commission = (packagePrices[pakej] * commissionRate / 100).toFixed(2);
+      
+      const msg = `Tempahan Baru:\nNama: ${nama}\nTelefon: ${telefon}\nPakej: ${pakej}\nKod Affiliate: ${affiliateCode || 'Tiada'}\nKomisen Affiliate: RM${commission}`;
       const url = `https://wa.me/601136237443?text=${encodeURIComponent(msg)}`;
       window.open(url, '_blank');
     }
+
+    // Memaparkan komisen semasa laman dimuat
+    window.onload = displayCommissions;
   </script>
 </body>
 </html>
