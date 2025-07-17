@@ -20,11 +20,6 @@
   <meta property="og:image" content="https://mokm32.github.io/necklenj-site/images/logo.png">
   <meta property="og:url" content="https://mokm32.github.io/necklenj-site/">
   <meta property="og:type" content="website">
-</head>
-
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NeckleNj | Jual ID OTT Navigator Lifetime + VOD</title>
   <style>
     body {
       margin: 0;
@@ -216,6 +211,37 @@
       margin: 1rem 0;
     }
 
+    .admin-login, .admin-upload {
+      padding: 2rem  provident;
+      max-width: 400px;
+      margin: auto;
+      background-color: #0e2a4d;
+      border-radius: 10px;
+      display: none;
+    }
+
+    .admin-login.active, .admin-upload.active {
+      display: block;
+    }
+
+    .review-gallery {
+      padding: 2rem 1rem;
+      background-color: #14375d;
+      text-align: center;
+    }
+
+    .review-gallery h2 {
+      color: #00bfff;
+      margin-bottom: 1rem;
+    }
+
+    .review-gallery img {
+      max-width: 200px;
+      margin: 0.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
     @media (max-width: 768px) {
       .package-container {
         flex-direction: column;
@@ -322,6 +348,23 @@
     </div>
   </section>
 
+  <section class="admin-login">
+    <h2>Log Masuk Admin</h2>
+    <input type="password" id="adminPassword" placeholder="Kata Laluan Admin" required>
+    <button onclick="loginAdmin()">Log Masuk</button>
+  </section>
+
+  <section class="admin-upload">
+    <h2>Muat Naik Gambar Ulasan</h2>
+    <input type="text" id="reviewImageUrl" placeholder="URL Gambar Ulasan" required>
+    <button onclick="uploadReviewImage()">Muat Naik Gambar</button>
+  </section>
+
+  <section class="review-gallery">
+    <h2>Ulasan Pembeli</h2>
+    <div id="reviewImages"></div>
+  </section>
+
   <form id="orderForm" onsubmit="submitOrder(event)">
     <h2>Borang Tempahan</h2>
     <input type="text" id="nama" placeholder="Nama Penuh" required>
@@ -340,18 +383,17 @@
   </form>
 
   <section class="payment-methods">
-  <h2>Kaedah Pembayaran</h2>
-  <div class="bank-info">
-    <!-- Gambar boleh ditekan dan dibuka dalam tab baru -->
-    <a href="https://i.ibb.co/0jtvDs9h/photo-2025-05-23-20-36-48.jpg" target="_blank">
-      <img src="https://i.ibb.co/0jtvDs9h/photo-2025-05-23-20-36-48.jpg" alt="Bukti Pembayaran" style="width: 200px; height: auto; margin-bottom: 10px; border-radius: 8px;">
-    </a>
-
-    <p><strong>Bank: Hong Leong Bank</strong></p>
-    <p><strong> - </strong></p>
-    <p>Sila buat pembayaran melalui <strong>QR Payment</strong> ke akaun di atas dan hantar bukti pembayaran kepada kami melalui WhatsApp.</p>
-  </div>
-</section>
+    <h2>Kaedah Pembayaran</h2>
+    <div class="bank-info">
+      <!-- Gambar boleh ditekan dan dibuka dalam tab baru -->
+      <a href="https://i.ibb.co/0jtvDs9h/photo-2025-05-23-20-36-48.jpg" target="_blank">
+        <img src="https://i.ibb.co/0jtvDs9h/photo-2025-05-23-20-36-48.jpg" alt="Bukti Pembayaran" style="width: 200px; height: auto; margin-bottom: 10px; border-radius: 8px;">
+      </a>
+      <p><strong>Bank: Hong Leong Bank</strong></p>
+      <p><strong> - </strong></p>
+      <p>Sila buat pembayaran melalui <strong>QR Payment</strong> ke akaun di atas dan hantar bukti pembayaran kepada kami melalui WhatsApp.</p>
+    </div>
+  </section>
 
   <footer>
     📞 Hubungi: <a href="tel:+601136237443">011-3623 7443</a><br/>
@@ -360,6 +402,60 @@
   </footer>
 
   <script>
+    // Admin login (simple password check for demo purposes)
+    function loginAdmin() {
+      const password = document.getElementById('adminPassword').value;
+      // Replace 'admin123' with a secure password in a real application
+      if (password === 'admin123') {
+        document.querySelector('.admin-login').classList.remove('active');
+        document.querySelector('.admin-upload').classList.add('active');
+        localStorage.setItem('isAdmin', 'true');
+        alert('Log masuk berjaya!');
+      } else {
+        alert('Kata laluan salah!');
+      }
+    }
+
+    // Check if admin is logged in on page load
+    window.onload = function() {
+      if (localStorage.getItem('isAdmin') === 'true') {
+        document.querySelector('.admin-login').classList.remove('active');
+        document.querySelector('.admin-upload').classList.add('active');
+      } else {
+        document.querySelector('.admin-login').classList.add('active');
+      }
+      displayReviewImages();
+    };
+
+    // Upload review image (store URL in localStorage)
+    function uploadReviewImage() {
+      const imageUrl = document.getElementById('reviewImageUrl').value;
+      if (imageUrl) {
+        let reviews = JSON.parse(localStorage.getItem('reviewImages') || '[]');
+        reviews.push(imageUrl);
+        localStorage.setItem('reviewImages', JSON.stringify(reviews));
+        document.getElementById('reviewImageUrl').value = '';
+        displayReviewImages();
+        alert('Gambar ulasan dimuat naik!');
+      } else {
+        alert('Sila masukkan URL gambar!');
+      }
+    }
+
+    // Display review images
+    function displayReviewImages() {
+      const reviews = JSON.parse(localStorage.getItem('reviewImages') || '[]');
+      const gallery = document.getElementById('reviewImages');
+      gallery.innerHTML = '';
+      reviews.forEach(url => {
+        const img = document.createElement('img');
+        img.src = url;
+        img.alt = 'Ulasan Pembeli';
+        img.onclick = () => window.open(url, '_blank');
+        gallery.appendChild(img);
+      });
+    }
+
     function fillPackage(value) {
       document.getElementById('pakej').value = value;
       window.scrollTo({ top: document.getElementById('orderForm').offsetTop - 20, behavior: 'smooth' });
